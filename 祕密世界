@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>個人網站</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #fdf6e3;
+            color: #586e75;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #073642;
+            color: #fff;
+            text-align: center;
+            padding: 1em;
+        }
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #268bd2;
+        }
+        .container {
+            padding: 2em;
+        }
+        h1, h2, h3 {
+            color: #073642;
+        }
+        .section {
+            margin-bottom: 2em;
+        }
+        .diary-entry, .note {
+            background-color: #eee8d5;
+            padding: 1em;
+            margin: 1em 0;
+            border-radius: 5px;
+        }
+        footer {
+            background-color: #073642;
+            color: #fff;
+            text-align: center;
+            padding: 1em;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>我的個人網站</h1>
+        <nav>
+            <a href="#about">關於我</a>
+            <a href="#diary">日記與記事本</a>
+            <a href="#books">免費電子書</a>
+            <a href="#contact">聯絡方式</a>
+        </nav>
+    </header>
+    
+    <div class="container">
+        <section id="about" class="section">
+            <h2>關於我</h2>
+            <p>這裡是我的個人網站，分享我的生活點滴和興趣愛好。</p>
+        </section>
+        
+        <section id="diary" class="section">
+            <h2>日記與記事本</h2>
+            <div class="diary-entry">
+                <h3>日記</h3>
+                <textarea id="diaryText" rows="10" cols="50" placeholder="在這裡寫下你的日記..."></textarea>
+                <button onclick="saveDiary()">保存日記</button>
+            </div>
+            <div class="note">
+                <h3>記事本</h3>
+                <textarea id="noteText" rows="5" cols="50" placeholder="在這裡記錄節慶和活動..."></textarea>
+                <button onclick="saveNote()">保存記事</button>
+            </div>
+            <div class="note">
+                <h3>備忘錄</h3>
+                <textarea id="memoText" rows="5" cols="50" placeholder="在這裡記錄備忘錄..."></textarea>
+                <button onclick="saveMemo()">保存備忘錄</button>
+            </div>
+        </section>
+        
+        <section id="books" class="section">
+            <h2>免費電子書</h2>
+            <p>這裡有一些免費的電子書供你閱讀：</p>
+            <ul>
+                <li><a href="https://www.gutenberg.org/" target="_blank">古騰堡計劃</a></li>
+                <li><a href="https://standardebooks.org/" target="_blank">Standard Ebooks</a></li>
+            </ul>
+        </section>
+        
+        <section id="contact" class="section">
+            <h2>聯絡方式</h2>
+            <p>你可以通過以下方式聯絡我：</p>
+            <ul>
+                <li><a href="https://www.youtube.com/" target="_blank">YouTube</a></li>
+                <li><a href="https://gimy.app/" target="_blank">Gimy 劇迷</a></li>
+                <li><a href="https://www.facebook.com/" target="_blank">Facebook</a></li>
+                <li><a href="mailto:your-email@gmail.com">Gmail</a></li>
+            </ul>
+        </section>
+    </div>
+    
+    <footer>
+        <p>&copy; 2024 我的個人網站</p>
+    </footer>
+    
+    <script>
+        function saveDiary() {
+            const diaryText = document.getElementById('diaryText').value;
+            localStorage.setItem('diary', diaryText);
+            alert('日記已保存');
+        }
+        
+        function saveNote() {
+            const noteText = document.getElementById('noteText').value;
+            localStorage.setItem('note', noteText);
+            alert('記事已保存');
+        }
+        
+        function saveMemo() {
+            const memoText = document.getElementById('memoText').value;
+            localStorage.setItem('memo', memoText);
+            alert('備忘錄已保存');
+        }
+        
+        window.onload = function() {
+            if(localStorage.getItem('diary')) {
+                document.getElementById('diaryText').value = localStorage.getItem('diary');
+            }
+            if(localStorage.getItem('note')) {
+                document.getElementById('noteText').value = localStorage.getItem('note');
+            }
+            if(localStorage.getItem('memo')) {
+                document.getElementById('memoText').value = localStorage.getItem('memo');
+            }
+        }
+    </script>
+</body>
+</html>
